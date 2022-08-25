@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         网页宽屏
-// @version      2.15.6
+// @version      2.15.8
 // @description  适配了半次元、微信公众号、知乎、掘金、简书、贴吧、百度搜索、搜狗搜索、segmentfault、哔哩哔哩、微博、豆瓣、今日头条、Google、CSDN、crates.io、米游社原神
 // @author       sakura-flutter
 // @namespace    https://github.com/sakura-flutter/tampermonkey-scripts
@@ -51,8 +51,8 @@
 // @grant        GM_deleteValue
 // @grant        GM_addValueChangeListener
 // @grant        GM_removeValueChangeListener
-// @require      https://cdn.jsdelivr.net/npm/vue@3/dist/vue.runtime.global.prod.min.js
-// @require      https://greasyfork.org/scripts/411093-toast/code/Toast.js?version=994674
+// @require      https://cdn.jsdelivr.net/npm/vue@3/dist/vue.runtime.global.prod.js
+// @require      https://greasyfork.org/scripts/411093-toast/code/Toast.js?version=1081231
 // ==/UserScript==
 
 /******/ (() => { // webpackBootstrap
@@ -74,7 +74,7 @@
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".skr-button{border:1px solid;border-radius:2px;box-shadow:var(--skr-button-box-shadow);cursor:pointer;line-height:1.5715;transition:var(--skr-button-transition)}.skr-button:hover{filter:brightness(1.15)}.skr-button:focus:not(:focus-visible){outline:0}.skr-button--primary{background-color:var(--skr-primary-color);border-color:var(--skr-primary-color);color:var(--skr-text-inverse-color)}.skr-button--default{background-color:var(--skr-white-color);border-color:var(--skr-border-color);color:var(--skr-text-primary-color)}.skr-button--default:hover{border-color:currentColor;color:var(--skr-primary-color);filter:brightness(1)}.skr-button--round{border-radius:50%}.skr-button--shadow{box-shadow:var(--skr-box-shadow-normal)}.skr-button--mini{font-size:12px;padding:2px 7px}.skr-button--small{font-size:12px;padding:4px 8px}.skr-button--normal{font-size:14px;padding:4px 15px}.skr-button--large{font-size:15px;padding:10px 20px}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".skr-button{border:1px solid;border-radius:2px;box-shadow:var(--skr-button-box-shadow);cursor:pointer;line-height:1.5715;transition:var(--skr-button-transition)}.skr-button:hover{filter:brightness(1.15)}.skr-button:focus:not(:focus-visible){outline:0}.skr-button--primary{background-color:var(--skr-primary-color);border-color:var(--skr-primary-color);color:var(--skr-text-inverse-color)}.skr-button--default{background-color:var(--skr-white-color);border-color:var(--skr-border-color);color:var(--skr-text-primary-color)}.skr-button--default:hover{border-color:currentcolor;color:var(--skr-primary-color);filter:brightness(1)}.skr-button--round{border-radius:50%}.skr-button--shadow{box-shadow:var(--skr-box-shadow-normal)}.skr-button--mini{font-size:12px;padding:2px 7px}.skr-button--small{font-size:12px;padding:4px 8px}.skr-button--normal{font-size:14px;padding:4px 15px}.skr-button--large{font-size:15px;padding:10px 20px}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -118,7 +118,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".skr-ripple-container{border-radius:in
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root{--skr-primary-color: #2878ff;--skr-primary-lighten-color: rgba(24, 144, 255, 0.2);--skr-white-color: #fff;--skr-transition-duration-fast: 0.1s;--skr-transition-duration-normal: 0.3s;--skr-box-shadow-lighten: 0 1px 6px rgba(0, 0, 0, 0.15);--skr-box-shadow-normal: 0 1px 6px rgba(0, 0, 0, 0.2);--skr-border-color: #d9d9d9;--skr-text-primary-color: #303133;--skr-text-regular-color: #666;--skr-text-secondary-color: #909399;--skr-text-inverse-color: var(--skr-white-color);--skr-button-transition: all var(--skr-transition-duration-normal);--skr-button-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);--skr-ripple-color: rgb(138 218 255 / 20%)}.inject-widescreen-js{align-items:center;contain:layout;display:flex;flex-direction:column;opacity:.5;position:fixed;right:7vw;top:150px;transition:opacity var(--skr-transition-duration-normal);z-index:99}.inject-widescreen-js label{align-items:center;bottom:0;cursor:pointer;display:flex;font-size:14px;margin:0;padding:0;position:absolute;transform:translateY(-10px);transition:transform var(--skr-transition-duration-normal);z-index:-1}.inject-widescreen-js:hover{opacity:1}.inject-widescreen-js:hover label{transform:translateY(100%)}.inject-widescreen-js button{background-image:none !important}.inject-widescreen-js input{margin:0 2px 0 0}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root{--skr-primary-color: #2878ff;--skr-primary-lighten-color: rgb(24 144 255 / 20%);--skr-white-color: #fff;--skr-transition-duration-fast: 0.1s;--skr-transition-duration-normal: 0.3s;--skr-box-shadow-lighten: 0 1px 6px rgb(0 0 0 / 15%);--skr-box-shadow-normal: 0 1px 6px rgb(0 0 0 / 20%);--skr-border-color: #d9d9d9;--skr-text-primary-color: #303133;--skr-text-regular-color: #666;--skr-text-secondary-color: #909399;--skr-text-inverse-color: var(--skr-white-color);--skr-button-transition: all var(--skr-transition-duration-normal);--skr-button-box-shadow: 0 2px 0 rgb(0 0 0 / 4.5%);--skr-ripple-color: rgb(138 218 255 / 20%)}.inject-widescreen-js{align-items:center;contain:layout;display:flex;flex-direction:column;opacity:.5;position:fixed;right:7vw;top:150px;transition:opacity var(--skr-transition-duration-normal);z-index:99}.inject-widescreen-js label{align-items:center;bottom:0;cursor:pointer;display:flex;font-size:14px;margin:0;padding:0;position:absolute;transform:translateY(-10px);transition:transform var(--skr-transition-duration-normal);z-index:-1}.inject-widescreen-js:hover{opacity:1}.inject-widescreen-js:hover label{transform:translateY(100%)}.inject-widescreen-js button{background-image:none !important}.inject-widescreen-js input{margin:0 2px 0 0}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -360,7 +360,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1390px){
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 900px){:root{--inject-page-width:min(75vw, 1039px)}.inject-widescreen-loose-js{--inject-page-width:75vw}#app .content .card{width:var(--inject-page-width) !important}#app .bili-dyn-content{width:auto !important}}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 900px){:root{--inject-page-width:min(75vw, 1039px)}.inject-widescreen-loose-js{--inject-page-width:75vw}#app .content{width:var(--inject-page-width) !important}#app .bili-dyn-content{width:auto !important}}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -536,7 +536,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1450px){
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1460px){:root{--inject-page-width:min(75vw, 1300px)}.inject-widescreen-loose-js{--inject-page-width:75vw}#head:not(.s-skin-hasbg){backdrop-filter:blur(10px);background-color:#ffffffd1}}@media screen and (min-width: 1460px)and (max-width: 1920px){.head_wrapper .s_form{margin-left:auto;margin-right:auto;width:-moz-fit-content;width:fit-content}}@media screen and (min-width: 1460px){.s_tab{margin-left:auto;margin-right:auto;padding-left:0 !important;width:-moz-fit-content;width:fit-content}}@media screen and (min-width: 1460px){#container{margin-left:auto !important;margin-right:auto !important;width:var(--inject-page-width) !important}}@media screen and (min-width: 1460px){#content_left{width:calc(var(--inject-page-width) - 450px) !important}#content_left>div:not([tpl*=img_address]){width:100% !important}#content_left .op-bk-polysemy-video__wrap{width:560px !important}#content_left .wenda-abstract-img-wrap-new{height:auto}#content_left .c-group-wrapper .result-op,#content_left .c-group-wrapper .c-group{width:95% !important}#content_left .new-pmd .c-span9{width:75%}}@media screen and (min-width: 1460px)and (min-width: 1680px){#content_left .new-pmd .c-span9{width:81%}}@media screen and (min-width: 1460px){#content_left .new-pmd .c-span12{width:100%}}@media screen and (min-width: 1460px){.page-inner{margin-left:auto;margin-right:auto;padding-left:0 !important;width:var(--inject-page-width)}}@media screen and (min-width: 1460px){.foot-inner{margin-left:auto;margin-right:auto;width:var(--inject-page-width)}}@media screen and (min-width: 1460px){#foot .foot-inner #help{padding-left:0 !important}}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1460px){:root{--inject-page-width:min(75vw, 1300px)}.inject-widescreen-loose-js{--inject-page-width:75vw}#head:not(.s-skin-hasbg){backdrop-filter:blur(10px);background-color:rgba(255,255,255,.8196078431)}}@media screen and (min-width: 1460px)and (max-width: 1920px){.head_wrapper .s_form{margin-left:auto;margin-right:auto;width:-moz-fit-content;width:fit-content}}@media screen and (min-width: 1460px){.s_tab{margin-left:auto;margin-right:auto;padding-left:0 !important;width:-moz-fit-content;width:fit-content}}@media screen and (min-width: 1460px){#container{margin-left:auto !important;margin-right:auto !important;width:var(--inject-page-width) !important}}@media screen and (min-width: 1460px){#content_left{width:calc(var(--inject-page-width) - 450px) !important}#content_left>div:not([tpl*=img_address]){width:100% !important}#content_left .op-bk-polysemy-video__wrap{width:560px !important}#content_left .wenda-abstract-img-wrap-new{height:auto}#content_left .c-group-wrapper .result-op,#content_left .c-group-wrapper .c-group{width:95% !important}#content_left .new-pmd .c-span9{width:75%}}@media screen and (min-width: 1460px)and (min-width: 1680px){#content_left .new-pmd .c-span9{width:81%}}@media screen and (min-width: 1460px){#content_left .new-pmd .c-span12{width:100%}}@media screen and (min-width: 1460px){.page-inner{margin-left:auto;margin-right:auto;padding-left:0 !important;width:var(--inject-page-width)}}@media screen and (min-width: 1460px){.foot-inner{margin-left:auto;margin-right:auto;width:var(--inject-page-width)}}@media screen and (min-width: 1460px){#foot .foot-inner #help{padding-left:0 !important}}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -624,7 +624,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1450px){
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1200px){:root{--inject-page-width:min(80vw, 1340px)}.inject-widescreen-loose-js{--inject-page-width:80vw}.hintBox,#pagebar_container,#s_footer>div,#wrapper,.header .header-box{margin-left:auto;margin-right:auto;padding-left:0;width:var(--inject-page-width) !important}.header .header-box{padding:0 5px 45px;position:relative}.header .header-box .logo{top:-8px}.header,.header.headsearch .header-box{padding-bottom:0}.headsearch{backdrop-filter:blur(10px);background-color:#ffffffd1}#wrapper{display:flex}#main{flex:1;max-width:none;padding-right:74px;width:0}#main .results{width:auto}#main .results>.vrwrap,#main .results>.rb{width:auto !important}.special-wrap,.vrPicBox{box-sizing:border-box;width:550px}#s_footer{padding-left:0}}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1200px){:root{--inject-page-width:min(80vw, 1340px)}.inject-widescreen-loose-js{--inject-page-width:80vw}.hintBox,#pagebar_container,#s_footer>div,#wrapper,.header .header-box{margin-left:auto;margin-right:auto;padding-left:0;width:var(--inject-page-width) !important}.header .header-box{padding:0 5px 45px;position:relative}.header .header-box .logo{top:-8px}.header,.header.headsearch .header-box{padding-bottom:0}.headsearch{backdrop-filter:blur(10px);background-color:rgba(255,255,255,.8196078431)}#wrapper{display:flex}#main{flex:1;max-width:none;padding-right:74px;width:0}#main .results{width:auto}#main .results>.vrwrap,#main .results>.rb{width:auto !important}.special-wrap,.vrPicBox{box-sizing:border-box;width:550px}#s_footer{padding-left:0}}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -646,7 +646,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1200px){
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1350px){:root{--inject-page-width:min(88vw, 1470px)}.inject-widescreen-loose-js{--inject-page-width:88vw}.article-detail-container{width:var(--inject-page-width) !important}.article-detail-container>.main{width:calc(var(--inject-page-width) - 298px - 60px - 96px) !important}.article-detail-container>.main .ttp-comment-block{width:auto}.article-detail-container .detail-end-feed{margin-left:auto;margin-right:auto;max-width:676px}}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1350px){:root{--inject-page-width:min(88vw, 1470px)}.inject-widescreen-loose-js{--inject-page-width:88vw}.article-detail-container,.wtt-detail-container{width:var(--inject-page-width) !important}.article-detail-container>.main,.wtt-detail-container>.main{width:calc(var(--inject-page-width) - 298px - 60px - 96px) !important}.article-detail-container>.main .ttp-comment-block,.wtt-detail-container>.main .ttp-comment-block{width:auto}.article-detail-container .detail-end-feed,.wtt-detail-container .detail-end-feed{margin-left:auto;margin-right:auto;max-width:676px}}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -797,8 +797,8 @@ module.exports = function (cssWithMappingToString) {
     var alreadyImportedModules = {};
 
     if (dedupe) {
-      for (var _i = 0; _i < this.length; _i++) {
-        var id = this[_i][0];
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
 
         if (id != null) {
           alreadyImportedModules[id] = true;
@@ -806,8 +806,8 @@ module.exports = function (cssWithMappingToString) {
       }
     }
 
-    for (var _i2 = 0; _i2 < modules.length; _i2++) {
-      var item = [].concat(modules[_i2]);
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
 
       if (dedupe && alreadyImportedModules[item[0]]) {
         continue;
@@ -1215,12 +1215,17 @@ module.exports = styleTagTransform;
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nc = undefined;
+/******/ 	})();
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 
-// NAMESPACE OBJECT: ./src/utils/ready-state.js
+// NAMESPACE OBJECT: ./src/utils/ready-state.ts
 var ready_state_namespaceObject = {};
 __webpack_require__.r(ready_state_namespaceObject);
 __webpack_require__.d(ready_state_namespaceObject, {
@@ -1234,8 +1239,7 @@ __webpack_require__.d(ready_state_namespaceObject, {
 ;// CONCATENATED MODULE: ./src/utils/compatibility.ts
 /**
  * 兼容性检查
- * @param {object} param0 & param1 版本, notify
- * @return {boolean} 是否通过
+ * @return 是否通过
  */
 function checker({
   firefox = 75,
@@ -1259,7 +1263,10 @@ function checker({
   }
 
   if (!pass) {
-    notify && window.Toast && Toast.error(`哎呀！遇到错误：不支持的浏览器版本(需要Chrome${chrome}或Firefox${firefox}以上~)，请更新浏览器版本 o(╥﹏╥)o`, 0);
+    const {
+      Toast
+    } = window;
+    notify && Toast && Toast.error(`哎呀！遇到错误：不支持的浏览器版本(需要Chrome${chrome}或Firefox${firefox}以上~)，请更新浏览器版本 o(╥﹏╥)o`, 0);
   }
 
   return pass;
@@ -1276,7 +1283,7 @@ function table(...args) {
 }
 
 
-;// CONCATENATED MODULE: ./src/utils/ready-state.js
+;// CONCATENATED MODULE: ./src/utils/ready-state.ts
 /**
  * readyState 因为脚本加载时机不一定监听到所有变化
  * 所以 pool 中的状态区分先后顺序
@@ -1323,37 +1330,35 @@ const interactive = fn => wrapper('interactive', fn);
 const DOMContentLoaded = fn => wrapper('DOMContentLoaded', fn);
 const complete = fn => wrapper('complete', fn);
 const load = fn => wrapper('load', fn);
-;// CONCATENATED MODULE: ./src/store/index.js
+;// CONCATENATED MODULE: ./src/store/index.ts
 /**
  * store
- * @param {string} modulename key会加入 [[modulename]]- 前缀
- * @param {boolean} local 是否本地存储
- * @return {proxy}
+ * @param modulename 会加入 [[modulename]]- 前缀
+ * @param local 是否本地存储
  */
 function createStore(modulename = '', local = true) {
   const getRealProp = property => modulename ? `[[${modulename}]]-${property}` : property;
 
-  const handler = {
-    get(target, property) {
+  const store = new Proxy({}, {
+    get(target, property, receiver) {
       const realProp = getRealProp(property);
-      const value = local ? GM_getValue(realProp) : target[realProp];
+      const value = local ? GM_getValue(realProp) : Reflect.get(target, realProp, receiver);
       return value;
     },
 
-    set(target, property, value) {
+    set(target, property, value, receiver) {
       const realProp = getRealProp(property);
-      local ? GM_setValue(realProp, value) : target[realProp] = value;
+      local ? GM_setValue(realProp, value) : Reflect.set(target, realProp, value, receiver);
       return true;
     },
 
     deleteProperty(target, property) {
       const realProp = getRealProp(property);
-      local ? GM_deleteValue(realProp) : delete target[realProp];
+      local ? GM_deleteValue(realProp) : Reflect.deleteProperty(target, realProp);
       return true;
     }
 
-  };
-  const store = new Proxy({}, handler);
+  });
   return store;
 }
 
@@ -1432,7 +1437,7 @@ exported.unuse = function() {
 
        /* harmony default export */ const bcy_net_index_lazy = (exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/bcy-net/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/bcy-net/index.ts
 
 
 
@@ -1516,7 +1521,7 @@ index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_mp_weixin_qq_com_index_lazy = (index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/mp-weixin-qq-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/mp-weixin-qq-com/index.ts
 
 
 
@@ -1598,7 +1603,7 @@ zhuanlan_zhihu_com_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_zhuanlan_zhihu_com_index_lazy = (zhuanlan_zhihu_com_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/zhuanlan-zhihu-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/zhuanlan-zhihu-com/index.ts
 
 
 
@@ -1691,7 +1696,7 @@ question_lazy_exported.unuse = function() {
 
        /* harmony default export */ const zhihu_com_question_lazy = (question_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/zhihu-com/question.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/zhihu-com/question.ts
 
 
 
@@ -1786,7 +1791,7 @@ home_lazy_exported.unuse = function() {
 
        /* harmony default export */ const zhihu_com_home_lazy = (home_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/zhihu-com/home.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/zhihu-com/home.ts
 
 const zhihuHome = ({
   store,
@@ -1852,7 +1857,7 @@ topic_lazy_exported.unuse = function() {
 
        /* harmony default export */ const zhihu_com_topic_lazy = (topic_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/zhihu-com/topic.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/zhihu-com/topic.ts
 
 const zhihuTopic = ({
   store,
@@ -1866,7 +1871,7 @@ const zhihuTopic = ({
   }
 
 });
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/zhihu-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/zhihu-com/index.ts
 
 
 
@@ -1923,7 +1928,7 @@ juejin_cn_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_juejin_cn_index_lazy = (juejin_cn_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/juejin-cn/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/juejin-cn/index.ts
 
 const juejin = ({
   store,
@@ -1989,7 +1994,7 @@ crates_io_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_crates_io_index_lazy = (crates_io_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/crates-io/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/crates-io/index.ts
 
 const crates = ({
   store,
@@ -2055,7 +2060,7 @@ jianshu_com_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_jianshu_com_index_lazy = (jianshu_com_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/jianshu-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/jianshu-com/index.ts
 
 const jianshu = ({
   store,
@@ -2069,10 +2074,11 @@ const jianshu = ({
   }
 
 });
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-baidu-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-baidu-com/index.ts
 
 
-const styles = __webpack_require__(632)/* ["default"].toString */ .Z.toString();
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = (__webpack_require__(632)/* ["default"].toString */ .Z.toString)();
 
 const baidu = ({
   store,
@@ -2148,7 +2154,7 @@ p_lazy_exported.unuse = function() {
 
        /* harmony default export */ const tieba_baidu_com_p_lazy = (p_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/tieba-baidu-com/p.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/tieba-baidu-com/p.ts
 
 
 
@@ -2260,7 +2266,7 @@ f_lazy_exported.unuse = function() {
 
        /* harmony default export */ const tieba_baidu_com_f_lazy = (f_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/tieba-baidu-com/f.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/tieba-baidu-com/f.ts
 
 const tiebaForum = ({
   store,
@@ -2274,7 +2280,7 @@ const tiebaForum = ({
   }
 
 });
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/tieba-baidu-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/tieba-baidu-com/index.ts
 
 
 
@@ -2330,7 +2336,7 @@ www_sogou_com_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_www_sogou_com_index_lazy = (www_sogou_com_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-sogou-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-sogou-com/index.ts
 
 const sougou = ({
   store,
@@ -2396,7 +2402,7 @@ segmentfault_com_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_segmentfault_com_index_lazy = (segmentfault_com_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/segmentfault-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/segmentfault-com/index.ts
 
 const segmentfault = ({
   store,
@@ -2462,7 +2468,7 @@ www_bilibili_com_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_www_bilibili_com_index_lazy = (www_bilibili_com_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-bilibili-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-bilibili-com/index.ts
 
 
 
@@ -2545,20 +2551,21 @@ t_bilibili_com_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_t_bilibili_com_index_lazy = (t_bilibili_com_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/utils/base.js
+;// CONCATENATED MODULE: ./src/utils/base.ts
 function throttle(fn, delay) {
-  let t = null;
+  let timeoutId;
   let begin = Date.now();
   return function (...args) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     const cur = Date.now();
-    clearTimeout(t);
+    clearTimeout(timeoutId);
 
     if (cur - begin >= delay) {
       fn.apply(self, args);
       begin = cur;
     } else {
-      t = setTimeout(function () {
+      timeoutId = setTimeout(function () {
         fn.apply(self, args);
       }, delay);
     }
@@ -2567,15 +2574,15 @@ function throttle(fn, delay) {
 function once(fn) {
   let called = false;
   return function (...args) {
-    if (called === false) {
+    if (!called) {
       called = true;
-      return fn.apply(this, args);
+      fn.apply(this, args);
     }
   };
 }
 /**
  * 延时
- * @param {number} ms 毫秒数
+ * @param ms 毫秒数
  */
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -2644,7 +2651,7 @@ mocha_official_gifts_lazy_exported.unuse = function() {
 
        /* harmony default export */ const t_bilibili_com_mocha_official_gifts_lazy = (mocha_official_gifts_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/t-bilibili-com/mocha-official-gifts.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/t-bilibili-com/mocha-official-gifts.ts
 
 
 
@@ -2731,7 +2738,7 @@ detail_lazy_exported.unuse = function() {
 
        /* harmony default export */ const t_bilibili_com_detail_lazy = (detail_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/t-bilibili-com/detail.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/t-bilibili-com/detail.ts
 
 
 const bilibiliDynamicDetail = ({
@@ -2746,7 +2753,7 @@ const bilibiliDynamicDetail = ({
   }
 
 });
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/t-bilibili-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/t-bilibili-com/index.ts
 
 const bilibiliDynamic = ({
   store,
@@ -2761,12 +2768,10 @@ const bilibiliDynamic = ({
 
 });
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/space-bilibili-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/space-bilibili-com/index.ts
 
-const bilibiliSpace = ({
-  store,
-  createControl
-}) => ({
+const bilibiliSpace = () => ({
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handler() {}
 
 });
@@ -2822,7 +2827,7 @@ www_douban_com_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_www_douban_com_index_lazy = (www_douban_com_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-douban-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-douban-com/index.ts
 
 const douban = ({
   store,
@@ -2888,7 +2893,7 @@ subject_lazy_exported.unuse = function() {
 
        /* harmony default export */ const movie_douban_com_subject_lazy = (subject_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/movie-douban-com/subject.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/movie-douban-com/subject.ts
 
 const doubanSubject = ({
   store,
@@ -2902,7 +2907,7 @@ const doubanSubject = ({
   }
 
 });
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/movie-douban-com/review.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/movie-douban-com/review.ts
 // 貌似样式一样的，直接用subject的吧
 
 const doubanReview = ({
@@ -2917,7 +2922,7 @@ const doubanReview = ({
   }
 
 });
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/movie-douban-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/movie-douban-com/index.ts
 
 
 // EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scripts/widescreen/sites/www-toutiao-com/index.lazy.scss
@@ -2972,7 +2977,7 @@ www_toutiao_com_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_www_toutiao_com_index_lazy = (www_toutiao_com_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-toutiao-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-toutiao-com/index.ts
 
 const toutiao = ({
   store,
@@ -3038,7 +3043,7 @@ article_lazy_exported.unuse = function() {
 
        /* harmony default export */ const weibo_com_article_lazy = (article_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/weibo-com/article.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/weibo-com/article.ts
 
 const weiboArticle = ({
   store,
@@ -3052,16 +3057,20 @@ const weiboArticle = ({
   }
 
 });
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/weibo-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/weibo-com/index.ts
 
 
 
 
-const homeStyles = __webpack_require__(5258)/* ["default"].toString */ .Z.toString();
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const homeStyles = (__webpack_require__(5258)/* ["default"].toString */ .Z.toString)(); // eslint-disable-next-line @typescript-eslint/no-var-requires
 
-const playDetailStyles = __webpack_require__(8184)/* ["default"].toString */ .Z.toString();
 
+const playDetailStyles = (__webpack_require__(8184)/* ["default"].toString */ .Z.toString)();
 
+ // hack type
+
+const unsafeWindowAlias = unsafeWindow;
 const weibo = ({
   store,
   createControl
@@ -3083,9 +3092,9 @@ const weibo = ({
           return;
         }
 
-        if (!unsafeWindow.$CONFIG) return;
-        if (proxyConfig && proxyConfig === unsafeWindow.$CONFIG) return;
-        const handler = {
+        if (!unsafeWindowAlias.$CONFIG) return;
+        if (proxyConfig && proxyConfig === unsafeWindowAlias.$CONFIG) return;
+        proxyConfig = new Proxy(unsafeWindowAlias.$CONFIG, {
           set(target, property, value, receiver) {
             const oldVal = target[property];
             const succeeded = Reflect.set(target, property, value, receiver);
@@ -3098,9 +3107,8 @@ const weibo = ({
             return succeeded;
           }
 
-        };
-        proxyConfig = new Proxy(unsafeWindow.$CONFIG, handler);
-        unsafeWindow.$CONFIG = proxyConfig;
+        });
+        unsafeWindowAlias.$CONFIG = proxyConfig;
         addStyle();
       });
     }
@@ -3141,7 +3149,7 @@ const weibo = ({
       const notify = once(() => {
         uiControl.notify();
       });
-      app.$watch('$route', (to, from) => {
+      app.$watch('$route', to => {
         styleSheet?.remove();
         warn('route changed', to);
         uiControl.hide();
@@ -3171,7 +3179,7 @@ const weibo = ({
       return function () {
         const {
           $CONFIG
-        } = unsafeWindow;
+        } = unsafeWindowAlias;
         const classnamePrefix = 'inject-ws-';
 
         const getClassname = classname => `${classnamePrefix}${classname}`;
@@ -3384,7 +3392,7 @@ d_weibo_com_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_d_weibo_com_index_lazy = (d_weibo_com_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/d-weibo-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/d-weibo-com/index.ts
 
 const weiboDynamic = ({
   store,
@@ -3400,9 +3408,8 @@ const weiboDynamic = ({
 });
 ;// CONCATENATED MODULE: ./src/utils/querystring.ts
 /**
- * 解析querystring
- * @param {string} href 或 带有参数格式的string；有search则不再hash
- * @return {object}
+ * 解析 query
+ * @param href 或 带有参数格式的 string；有 search 则不再 hash
  */
 function parse(href = location.href) {
   if (!href) return {};
@@ -3430,7 +3437,7 @@ function parse(href = location.href) {
   return Object.fromEntries(new URLSearchParams(search));
 }
 function stringify(obj) {
-  return Object.entries(obj) // 过滤 undefined，保留 null 且转成''
+  return Object.entries(obj) // 过滤 undefined，保留 null 且转成 ''
   .filter(([, value]) => value !== undefined).map(([key, value]) => `${key}=${value ?? ''}`).join('&');
 }
 // EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scripts/widescreen/sites/www-google-com/index.lazy.scss
@@ -3485,7 +3492,7 @@ www_google_com_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_www_google_com_index_lazy = (www_google_com_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-google-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/www-google-com/index.ts
 
 
 const google = ({
@@ -3554,7 +3561,7 @@ blog_csdn_net_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_blog_csdn_net_index_lazy = (blog_csdn_net_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/blog-csdn-net/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/blog-csdn-net/index.ts
 
 const csdn = ({
   store,
@@ -3574,15 +3581,17 @@ const csdn = ({
   }
 
 });
-;// CONCATENATED MODULE: ./src/utils/visibility-state.js
-// 页面 visible 时执行 setInterval
-// 参数同 setInterval，返回终止函数
+;// CONCATENATED MODULE: ./src/utils/visibility-state.ts
+/**
+ * 页面 visible 时执行 setInterval
+ * 参数同 setInterval，返回终止函数
+ */
 function onVisible(callback, delay = 500, ...rest) {
   let intervalId;
 
   function listener() {
     clearInterval(intervalId);
-    if (document.visibilityState === 'hidden') return; // eslint-disable-next-line node/no-callback-literal
+    if (document.visibilityState === 'hidden') return; // eslint-disable-next-line n/no-callback-literal
 
     callback(...rest);
     intervalId = setInterval(callback, delay, ...rest);
@@ -3647,7 +3656,7 @@ bbs_mihoyo_com_index_lazy_exported.unuse = function() {
 
        /* harmony default export */ const sites_bbs_mihoyo_com_index_lazy = (bbs_mihoyo_com_index_lazy_exported);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/bbs-mihoyo-com/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/bbs-mihoyo-com/index.ts
 
 
 
@@ -3680,7 +3689,7 @@ const mihoyoBBS = ({
   }
 
 });
-;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/index.ts
 
 
 
@@ -3812,8 +3821,8 @@ const sites = [{
 }, {
   name: '头条',
   namespace: 'toutiao',
-  test: /^www\.toutiao\.com\/(a|i)\d+\/?$/,
-  // a6884536349483860492、i6971382481899536933
+  test: /^www\.toutiao\.com\/(article|w)\/\d+\/?$/,
+  // article/6884536349483860492、话题 w/1732500407565326
   use: toutiao
 }, {
   name: '微博',
@@ -3852,7 +3861,7 @@ const sites = [{
 /* harmony default export */ const widescreen_sites = (sites);
 ;// CONCATENATED MODULE: external "Vue"
 const external_Vue_namespaceObject = Vue;
-;// CONCATENATED MODULE: ./src/utils/mount-component.js
+;// CONCATENATED MODULE: ./src/utils/mount-component.ts
 /*
   引用：https://github.com/youzan/vant/blob/dev/src/utils/mount-component.ts
 */
@@ -3870,33 +3879,16 @@ function mountComponent(RootComponent) {
     instance: app.mount(root),
 
     unmount() {
-      app.unmount(root);
+      app.unmount();
       document.body.removeChild(root);
     }
 
   };
 }
-;// CONCATENATED MODULE: ./src/composables/use-expose.js
-/*
-  引用：https://github.com/youzan/vant/blob/dev/src/composables/use-expose.ts
-*/
- // expose public api
-
-function useExpose(apis) {
-  const instance = (0,external_Vue_namespaceObject.getCurrentInstance)();
-
-  if (instance) {
-    Object.assign(instance.proxy, apis);
-  }
-}
-;// CONCATENATED MODULE: ./src/composables/use-gm-value.js
+;// CONCATENATED MODULE: ./src/composables/use-gm-value.ts
 
 /**
- * 同GM_getValue、GM_setValue
- * @param {string} name
- * @param {any} defaultValue
- * @param {boolean | object} options: listening, deep
- * @return {any}
+ * 同 GM_getValue、GM_setValue
  */
 
 function useGMvalue(name, defaultValue, _options) {
@@ -3925,12 +3917,12 @@ function useGMvalue(name, defaultValue, _options) {
 
   return value;
 }
-;// CONCATENATED MODULE: ./src/directives/v-ripple/utils.js
+;// CONCATENATED MODULE: ./src/directives/v-ripple/utils.ts
 /**
  * 计算一个点离矩形中心点的距离
- * @param {number} width 矩形宽
- * @param {number} height 矩形高
- * @return {function} function(left top 在矩形内点的坐标) @return {number} 距离
+ * @param width 矩形宽
+ * @param height 矩形高
+ * @return (left top 在矩形内点的坐标) => {} => () => {} 距离
  */
 function calcDiagInRect(width, height) {
   const halfWidth = width / 2;
@@ -3944,11 +3936,11 @@ function calcDiagInRect(width, height) {
 }
 /**
  * 计算当前值离总值中心的位置 越靠近中心值为1，远离中心值为0
- * 例如：value:50 extent:100 则计算50在0-100中的位置返回1
- * value:0或100 extent:100 返回0
- * @param {number} value 当前值
- * @param {number} extent 总值
- * @return {number} 取值0-1
+ * @param value 当前值
+ * @param extent 总值
+ * @return 取值 0-1
+ * @example value：50 extent：100 则计算 50 在 0-100 中的位置返回 1
+ * value：0 或 100 extent：100 返回 0
  */
 
 function closeness(value, extent) {
@@ -3987,16 +3979,16 @@ var v_ripple_update = injectStylesIntoStyleTag_default()(v_ripple/* default */.Z
 
        /* harmony default export */ const directives_v_ripple = (v_ripple/* default */.Z && v_ripple/* default.locals */.Z.locals ? v_ripple/* default.locals */.Z.locals : undefined);
 
-;// CONCATENATED MODULE: ./src/directives/v-ripple/index.js
+;// CONCATENATED MODULE: ./src/directives/v-ripple/index.ts
 
 
 const containerClassname = 'skr-ripple-container';
 const rippleClassname = 'skr-ripple';
-const vmap = new WeakMap();
+const weakmap = new WeakMap();
+
 /**
  * 创建容器元素
  */
-
 function createRippleContainer() {
   const div = document.createElement('div');
   div.classList.add(containerClassname);
@@ -4013,7 +4005,7 @@ function createRippleEl() {
   return span;
 }
 
-function checkOptions(options = {}) {
+function normalizeOptions(options) {
   if (typeof options === 'boolean') {
     return {
       disabled: !options
@@ -4024,23 +4016,20 @@ function checkOptions(options = {}) {
 }
 /**
  * 添加涟漪效果
- * @param {object} options color颜色 disabled禁用   布尔值时false为禁用
  */
 
 
-const addRippleEffect = function (options = {}) {
-  options = checkOptions(options); // 涟漪个数
+const addRippleEffect = function (_options = {}) {
+  let options = normalizeOptions(_options); // 涟漪个数
 
   let count = 0;
 
   function listener(event) {
     if (options.disabled) return;
-    const {
-      currentTarget
-    } = event; // 优化: 处理过后不再调用getComputedStyle
+    const currentTarget = event.currentTarget; // 优化: 处理过后不再调用getComputedStyle
 
-    if (vmap.get(currentTarget).position === false) {
-      vmap.get(currentTarget).position = true; // 注意：会改变当前元素定位方式
+    if (weakmap.get(currentTarget).position === false) {
+      weakmap.get(currentTarget).position = true; // 注意：会改变当前元素定位方式
 
       if (getComputedStyle(currentTarget).position === 'static') {
         currentTarget.style.position = 'relative';
@@ -4056,7 +4045,7 @@ const addRippleEffect = function (options = {}) {
     const left = event.pageX - rect.left - window.scrollX;
     const top = event.pageY - rect.top - window.scrollY; // 选项加入到元素中
 
-    rippleEl.style.background = options.color;
+    options.color && (rippleEl.style.background = options.color);
     rippleEl.style.width = side + 'px';
     rippleEl.style.height = side + 'px'; // 元素定位再各减自身的宽高一半
 
@@ -4082,7 +4071,7 @@ const addRippleEffect = function (options = {}) {
       const listener = () => {
         // 为了尽量能看清动画效果，延时一下再进行透明
         setTimeout(() => {
-          rippleEl.style.opacity = 0;
+          rippleEl.style.opacity = '0';
         }, 100);
       };
 
@@ -4099,7 +4088,7 @@ const addRippleEffect = function (options = {}) {
         rippleEl.remove(); // 没有涟漪元素时移除容器
 
         if (--count <= 0) {
-          container.remove();
+          container?.remove();
         }
       }
     });
@@ -4107,7 +4096,7 @@ const addRippleEffect = function (options = {}) {
 
 
   function update(newOpts) {
-    options = Object.assign({}, options, checkOptions(newOpts));
+    options = Object.assign({}, options, normalizeOptions(newOpts));
   }
 
   return {
@@ -4122,24 +4111,25 @@ const vRipple = {
       listener,
       update
     } = addRippleEffect(binding.value);
-    vmap.set(el, {
+    weakmap.set(el, {
       listener,
       update,
       // 更新配置项函数
-      position: false // 是否已经改变了el的定位方式
+      position: false // 是否已经改变了 el 的定位方式
 
     });
     el.addEventListener('mousedown', listener, false);
   },
 
   updated(el, binding) {
-    const val = vmap.get(el);
+    const val = weakmap.get(el);
     val.update(binding.value);
   }
 
 };
 /* harmony default export */ const src_directives_v_ripple = (vRipple);
-;// CONCATENATED MODULE: ./src/directives/index.js
+;// CONCATENATED MODULE: ./src/directives/index.ts
+
 
 // EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/button/index.scss
 var components_button = __webpack_require__(5482);
@@ -4172,12 +4162,12 @@ var button_update = injectStylesIntoStyleTag_default()(components_button/* defau
 
        /* harmony default export */ const src_components_button = (components_button/* default */.Z && components_button/* default.locals */.Z.locals ? components_button/* default.locals */.Z.locals : undefined);
 
-;// CONCATENATED MODULE: ./src/components/button/index.js
+;// CONCATENATED MODULE: ./src/components/button/index.tsx
 
 
 
 
-const prefixCls = 'skr-button'; // button type非default时覆盖一层白色
+const prefixCls = 'skr-button'; // button type 非 default 时覆盖一层白色
 
 const rippleColor = 'rgb(255 255 255 / 15%)';
 const Button = (0,external_Vue_namespaceObject.defineComponent)({
@@ -4208,7 +4198,7 @@ const Button = (0,external_Vue_namespaceObject.defineComponent)({
       validator: value => ['mini', 'small', 'normal', 'large'].includes(value),
       default: 'normal'
     },
-    // 涟漪效果 object时参数会透传给ripple
+    // 涟漪效果 object 时参数会透传给 ripple
     ripple: {
       type: [Boolean, Object],
       default: true
@@ -4230,7 +4220,7 @@ const Button = (0,external_Vue_namespaceObject.defineComponent)({
         [`${prefixCls}--round`]: props.round,
         [`${prefixCls}--shadow`]: props.shadow
       }, `${prefixCls}--${props.size}`]
-    }, [slots.default()]), [[(0,external_Vue_namespaceObject.resolveDirective)("ripple"), rippleOptions.value]]);
+    }, [slots.default?.()]), [[(0,external_Vue_namespaceObject.resolveDirective)("ripple"), rippleOptions.value]]);
   }
 
 });
@@ -4266,27 +4256,31 @@ var control_update = injectStylesIntoStyleTag_default()(control/* default */.Z, 
 
        /* harmony default export */ const widescreen_control = (control/* default */.Z && control/* default.locals */.Z.locals ? control/* default.locals */.Z.locals : undefined);
 
-;// CONCATENATED MODULE: ./src/scripts/widescreen/control.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/control.tsx
 
 
 
 
 
 
+ // eslint-disable-next-line @typescript-eslint/no-empty-function
 
- // 宽屏开关 options: store<store>, execute要执行的函数，visible是否可见(后续用show hide控制)，silent是否显示通知
+const noop = () => {};
 
+/** 宽屏开关 */
 function createControl(options) {
   const {
     store,
-    execute = () => {},
+    execute = noop,
     visible = true,
     silent = false
   } = options;
   const {
     instance
   } = mountComponent({
-    setup() {
+    setup(_, {
+      expose
+    }) {
       const state = (0,external_Vue_namespaceObject.reactive)({
         // 总开关
         uiVisible: useGMvalue('ui_visible', true),
@@ -4303,7 +4297,7 @@ function createControl(options) {
         location.reload();
       }
 
-      useExpose({
+      expose({
         notify,
         show: () => {
           state.visible = true;
@@ -4342,7 +4336,7 @@ function createControl(options) {
   });
   return instance;
 }
-;// CONCATENATED MODULE: ./src/scripts/widescreen/index.js
+;// CONCATENATED MODULE: ./src/scripts/widescreen/index.ts
 function _classPrivateFieldLooseBase(receiver, privateKey) { if (!Object.prototype.hasOwnProperty.call(receiver, privateKey)) { throw new TypeError("attempted to use private field on non-instance"); } return receiver; }
 
 var id = 0;
@@ -4354,8 +4348,9 @@ function _classPrivateFieldLooseKey(name) { return "__private_" + id++ + "_" + n
 
 
 
- // 主函数
 
+
+// 主函数
 function main() {
   if (!checker()) return;
   GM_registerMenuCommand('宽屏通知', function () {
@@ -4382,7 +4377,7 @@ class App {
     });
     Object.defineProperty(this, _sites, {
       writable: true,
-      value: []
+      value: void 0
     });
     _classPrivateFieldLooseBase(this, _sites)[_sites] = sites;
   }
@@ -4401,7 +4396,10 @@ class App {
       const {
         readyState: state
       } = site;
-      if (state) await ready_state_namespaceObject[state]();
+      if (state) await ready_state_namespaceObject[state](); // fix: 罕见情况下会获取不到 head，原因未知
+      // 偶尔会在知乎中出现
+
+      if (document.head == null) await interactive();
       const config = use({
         createControl: createControl,
         store: widescreen_createStore(namespace)
@@ -4423,10 +4421,9 @@ function _includes2(test, url) {
 }
 
 function widescreen_createStore(namespace) {
-  if (!namespace) throw new TypeError('缺少namespace，期望<string>');
-  const handler = {
-    get(target, property) {
-      let value = target[property];
+  const store = new Proxy(createStore(namespace), {
+    get(target, property, receiver) {
+      let value = Reflect.get(target, property, receiver);
 
       if (property === 'enabled') {
         // 默认开启
@@ -4436,8 +4433,7 @@ function widescreen_createStore(namespace) {
       return value;
     }
 
-  };
-  const store = new Proxy(createStore(namespace), handler);
+  });
   return store;
 }
 
