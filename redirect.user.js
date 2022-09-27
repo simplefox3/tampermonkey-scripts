@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         redirect 外链跳转
-// @version      1.27.0
+// @version      1.31.0
 // @description  自动跳转(重定向)到目标链接，免去点击步骤。适配了简书、知乎、微博、QQ邮箱、QQPC、印象笔记、贴吧、CSDN、YouTube、微信、微信开放社区、开发者知识库、豆瓣、个人图书馆、Pixiv、搜狗、Google、站长之家、OSCHINA、掘金、腾讯文档、pc6下载站、爱发电、Gitee、天眼查、爱企查、企查查、优设网、51CTO、力扣
 // @author       sakura-flutter
 // @namespace    https://github.com/sakura-flutter/tampermonkey-scripts
@@ -40,7 +40,7 @@
 // @match        *://www.qcc.com/web/transfer-link*
 // @match        *://link.uisdc.com/*
 // @match        *://blog.51cto.com/transfer*
-// @match        *://leetcode-cn.com/link*
+// @match        *://leetcode.cn/link*
 // @include      /^https?:\/\/www\.google\..{2,7}url/
 // ==/UserScript==
 
@@ -81,7 +81,7 @@
 /************************************************************************/
 var __webpack_exports__ = {};
 
-// NAMESPACE OBJECT: ./src/utils/ready-state.js
+// NAMESPACE OBJECT: ./src/utils/ready-state.ts
 var ready_state_namespaceObject = {};
 __webpack_require__.r(ready_state_namespaceObject);
 __webpack_require__.d(ready_state_namespaceObject, {
@@ -96,15 +96,27 @@ __webpack_require__.d(ready_state_namespaceObject, {
 const isDebug = "production" !== 'production';
 
 function warn(...args) {
-  isDebug && console.warn('%c      warn      ', 'background: #ffa500; padding: 1px; color: #fff;', ...args);
+  isDebug && warn.force(...args);
 }
+
+warn.force = function (...args) {
+  console.warn('%c      warn      ', 'background: #ffa500; padding: 1px; color: #fff;', ...args);
+};
+
+function error(...args) {
+  isDebug && error.force(...args);
+}
+
+error.force = function (...args) {
+  console.error('%c      error      ', 'background: red; padding: 1px; color: #fff;', ...args);
+};
 
 function table(...args) {
   isDebug && console.table(...args);
 }
 
 
-;// CONCATENATED MODULE: ./src/utils/ready-state.js
+;// CONCATENATED MODULE: ./src/utils/ready-state.ts
 /**
  * readyState 因为脚本加载时机不一定监听到所有变化
  * 所以 pool 中的状态区分先后顺序
@@ -129,7 +141,6 @@ const execute = (readyState = currentState) => {
 };
 
 warn('document.readyState', currentState);
-execute();
 
 if (document.readyState !== 'complete') {
   document.addEventListener('readystatechange', () => execute(document.readyState));
@@ -141,9 +152,9 @@ window.addEventListener('load', () => execute('load'));
 const wrapper = (readyState, fn) => new Promise(resolve => {
   pool.get(readyState).push(function () {
     resolve(fn?.());
-  }) // 边界情况，加载完还有回调添加也执行一下
-  ;
-  ['complete', 'load'].includes(currentState) && execute();
+  }); // 立即检查一下
+
+  execute();
 });
 
 const loading = fn => wrapper('loading', fn);
@@ -153,9 +164,8 @@ const complete = fn => wrapper('complete', fn);
 const load = fn => wrapper('load', fn);
 ;// CONCATENATED MODULE: ./src/utils/querystring.ts
 /**
- * 解析querystring
- * @param {string} href 或 带有参数格式的string；有search则不再hash
- * @return {object}
+ * 解析 query
+ * @param href 或 带有参数格式的 string；有 search 则不再 hash
  */
 function parse(href = location.href) {
   if (!href) return {};
@@ -183,21 +193,13 @@ function parse(href = location.href) {
   return Object.fromEntries(new URLSearchParams(search));
 }
 function stringify(obj) {
-  return Object.entries(obj) // 过滤 undefined，保留 null 且转成''
+  return Object.entries(obj) // 过滤 undefined，保留 null 且转成 ''
   .filter(([, value]) => value !== undefined).map(([key, value]) => `${key}=${value ?? ''}`).join('&');
 }
 ;// CONCATENATED MODULE: ./src/utils/selector.ts
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-jianshu-com.js
-const jianshu = () => ({
-  query: 'url'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/link-zhihu-com.js
-const zhihu = () => ({
-  query: 'target'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/t-cn.js
+;// CONCATENATED MODULE: ./src/scripts/redirect/sites/t-cn.ts
 
 const weibo = async () => {
   let link = $('.open-url a[href]')?.href;
@@ -206,41 +208,7 @@ const weibo = async () => {
     link
   };
 };
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/weibo-cn.js
-const weibo_cn_weibo = () => ({
-  query: 'toasturl'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/mail-qq-com.js
-
-const qqMail = () => ({
-  link: parse().url || parse().gourl
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/c-pc-qq-com.js
-const qqPC = () => ({
-  query: 'pfurl'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/docs-qq-com.js
-const qqDocs = () => ({
-  query: 'url'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/app-yinxiang-com.js
-const yinxiang = () => ({
-  query: 'dest'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/jump2-bdimg-com.js
-const tieba = () => ({
-  selector: '.warning_info a:nth-of-type(1)[href]',
-  attr: 'href'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/link-csdn-net.js
-const csdn = () => ({
-  query: 'target'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-youtube-com.js
-const youtube = () => ({
-  query: 'q'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/weixin110-qq-com.js
+;// CONCATENATED MODULE: ./src/scripts/redirect/sites/weixin110-qq-com.ts
 /* eslint-disable camelcase */
 
 const weixin = () => {
@@ -256,28 +224,16 @@ const weixin = () => {
 
     case '2':
       {
-        const url = new URL(location); // 转为1可还原链接
+        const url = new URL(location.href); // 转为1可还原链接
 
         url.searchParams.set('main_type', '1');
-        location.replace(url.toString());
+        location.replace(url.href);
       }
   }
 
   return {};
 };
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/developers-weixin-qq-com.js
-const weixinDevelopers = () => ({
-  query: 'href'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-itdaan-com.js
-const itdaan = () => ({
-  selector: '.safety-url'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-douban-com.js
-const douban = () => ({
-  query: 'url'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-360doc-com.js
+;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-360doc-com.ts
 
 
 const doc360 = () => {
@@ -285,9 +241,7 @@ const doc360 = () => {
     const {
       target
     } = event;
-    const {
-      href
-    } = target;
+    const href = target.href;
     warn(target);
     if (target.nodeName !== 'A') return;
     if (!href) return; // 是否本站
@@ -298,7 +252,7 @@ const doc360 = () => {
   }, true);
   return {};
 };
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-pixiv-net.js
+;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-pixiv-net.ts
 
 const pixiv = () => {
   let link; // 链接居然是直接拼在url上的
@@ -318,84 +272,7 @@ const pixiv = () => {
     link
   };
 };
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/m-sogou-com.js
-const sogou = () => ({
-  query: 'url'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-google-com.js
-const google = () => ({
-  query: 'url'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-chinaz-com.js
-const chinaz = () => ({
-  query: 'url'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-oschina-net.js
-const oschina = () => ({
-  query: 'url'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/link-juejin-cn.js
-const juejin = () => ({
-  query: 'target'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-pc6-com.js
-const pc6 = () => ({
-  query: 'gourl'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/afdian-net.js
-const afdian = () => ({
-  query: 'target'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/gitee-com.js
-const gitee = () => ({
-  query: 'target'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-tianyancha-com.js
-const tianyancha = () => ({
-  query: 'target'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/aiqicha-baidu-com.js
-const aiqicha = () => ({
-  query: 'target'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/www-qcc-com.js
-const qcc = () => ({
-  query: 'link'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/link-uisdc-com.js
-const uisdc = () => ({
-  query: 'redirect'
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/blog-51cto-com.js
-const cto51 = () => ({
-  link: location.search.slice(1)
-});
-;// CONCATENATED MODULE: ./src/scripts/redirect/sites/index.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+;// CONCATENATED MODULE: ./src/scripts/redirect/sites/index.ts
 
 
 
@@ -404,11 +281,15 @@ const cto51 = () => ({
 const sites = [{
   name: '简书',
   test: 'www.jianshu.com/go-wild',
-  use: jianshu
+  use: () => ({
+    query: 'url'
+  })
 }, {
   name: '知乎',
   test: 'link.zhihu.com/',
-  use: zhihu
+  use: () => ({
+    query: 'target'
+  })
 }, {
   name: '微博',
   test: /^t\.cn\//,
@@ -418,39 +299,56 @@ const sites = [{
   name: '微博',
   // 不同规则
   test: 'weibo.cn/sinaurl',
-  use: weibo_cn_weibo
+  use: () => ({
+    link: parse().toasturl || parse().u
+  })
 }, {
   name: 'QQ邮箱',
   test: [/^mail\.qq\.com\/cgi-bin\/readtemplate/, // 好像不用登录也可以
   /^mail\.qq\.com\/cgi-bin\/mail_spam/ // 需要登录邮箱才可以，不过这里仍然可以帮忙跳转
   ],
-  use: qqMail
+  use: () => ({
+    link: parse().url || parse().gourl
+  })
 }, {
   name: 'QQPC',
   test: 'c.pc.qq.com/middlem.html',
-  use: qqPC
+  use: () => ({
+    query: 'pfurl'
+  })
 }, {
   name: '腾讯文档',
   test: 'docs.qq.com/scenario/link.html',
-  use: qqDocs
+  use: () => ({
+    query: 'url'
+  })
 }, {
   name: '印象笔记',
   test: /^app\.yinxiang\.com\/OutboundRedirect/,
-  use: yinxiang
+  use: () => ({
+    query: 'dest'
+  })
 }, {
   name: '贴吧',
   test: /^jump2?\.bdimg\.com\/safecheck/,
   // 以前的地址没有 2
   readyState: 'interactive',
-  use: tieba
+  use: () => ({
+    selector: '.warning_info a:nth-of-type(1)[href]',
+    attr: 'href'
+  })
 }, {
   name: 'CSDN',
   test: 'link.csdn.net/',
-  use: csdn
+  use: () => ({
+    query: 'target'
+  })
 }, {
   name: 'YouTube',
   test: 'www.youtube.com/redirect',
-  use: youtube
+  use: () => ({
+    query: 'q'
+  })
 }, {
   name: '微信',
   test: /^weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi/,
@@ -459,16 +357,22 @@ const sites = [{
 }, {
   name: '微信开放社区',
   test: 'developers.weixin.qq.com/community/middlepage/href',
-  use: weixinDevelopers
+  use: () => ({
+    query: 'href'
+  })
 }, {
   name: '开发者知识库',
   test: /^www\.itdaan.com\/link\//,
   readyState: 'interactive',
-  use: itdaan
+  use: () => ({
+    selector: '.safety-url'
+  })
 }, {
   name: '豆瓣',
   test: 'www.douban.com/link2/',
-  use: douban
+  use: () => ({
+    query: 'url'
+  })
 }, {
   name: '个人图书馆',
   test: /^www\.360doc.com\/content\//,
@@ -481,64 +385,90 @@ const sites = [{
 }, {
   name: '搜狗',
   test: /^m\.sogou\.com.*tc$/,
-  use: sogou
+  use: () => ({
+    query: 'url'
+  })
 }, {
   name: 'Google',
   test: /^www\.google\..{2,7}url$/,
-  use: google
+  use: () => ({
+    link: parse().url || parse().q
+  })
 }, {
   name: '站长之家',
   test: 'www.chinaz.com/go.shtml',
-  use: chinaz
+  use: () => ({
+    query: 'url'
+  })
 }, {
   name: 'OSCHINA',
   test: 'www.oschina.net/action/GoToLink',
-  use: oschina
+  use: () => ({
+    query: 'url'
+  })
 }, {
   name: '掘金',
   test: 'link.juejin.cn/',
-  use: juejin
+  use: () => ({
+    query: 'target'
+  })
 }, {
   name: 'pc6下载站',
   test: 'www.pc6.com/goread.html',
-  use: pc6
+  use: () => ({
+    query: 'gourl'
+  })
 }, {
   name: '爱发电',
   test: 'afdian.net/link',
-  use: afdian
+  use: () => ({
+    query: 'target'
+  })
 }, {
   name: 'Gitee',
   test: 'gitee.com/link',
-  use: gitee
+  use: () => ({
+    query: 'target'
+  })
 }, {
   name: '天眼查',
   test: 'www.tianyancha.com/security',
-  use: tianyancha
+  use: () => ({
+    query: 'target'
+  })
 }, {
   name: '爱企查',
   test: 'aiqicha.baidu.com/safetip',
-  use: aiqicha
+  use: () => ({
+    query: 'target'
+  })
 }, {
   name: '企查查',
   test: 'www.qcc.com/web/transfer-link',
-  use: qcc
+  use: () => ({
+    query: 'link'
+  })
 }, {
   name: '优设网',
   test: 'link.uisdc.com/',
-  use: uisdc
+  use: () => ({
+    query: 'redirect'
+  })
 }, {
   name: '51CTO',
   test: 'blog.51cto.com/transfer',
-  use: cto51
+  use: () => ({
+    link: location.search.slice(1)
+  })
 }, {
   name: '力扣',
-  test: 'leetcode-cn.com/link/',
+  test: 'leetcode.cn/link/',
   use: () => ({
     query: 'target'
   })
 }];
 /* harmony default export */ const redirect_sites = (sites);
-;// CONCATENATED MODULE: ./src/scripts/redirect/index.js
+;// CONCATENATED MODULE: ./src/scripts/redirect/index.ts
 function _classPrivateFieldLooseBase(receiver, privateKey) { if (!Object.prototype.hasOwnProperty.call(receiver, privateKey)) { throw new TypeError("attempted to use private field on non-instance"); } return receiver; }
 
 var id = 0;
@@ -552,11 +482,9 @@ function _classPrivateFieldLooseKey(name) { return "__private_" + id++ + "_" + n
 
 
 function hidePage() {
-  function hide() {
+  interactive(() => {
     document.body.style.cssText = 'display:none !important;';
-  }
-
-  document.body ? hide() : interactive(hide);
+  });
 }
 
 var _sites = /*#__PURE__*/_classPrivateFieldLooseKey("sites");
@@ -580,7 +508,7 @@ class App {
     });
     Object.defineProperty(this, _sites, {
       writable: true,
-      value: []
+      value: void 0
     });
     _classPrivateFieldLooseBase(this, _sites)[_sites] = sites;
   }
@@ -607,7 +535,7 @@ class App {
       });
       if (!redirection) return;
       location.replace(redirection); // 为什么要这样做？
-      // 只是为了避免被问”哎！怎么好像没有跳转啊？！“的烦恼（实际上跳转了只是外链打开慢）(x_x)
+      // 只是为了避免被问“哎！怎么好像没有跳转啊？！”的烦恼（实际上跳转了只是外链打开慢）(x_x)
 
       hidePage();
     });
@@ -619,7 +547,6 @@ function _includes2(test, url) {
   return [].concat(test).some(item => {
     if (typeof item === 'string') return item === url;
     if (item instanceof RegExp) return item.test(url);
-    if (typeof item === 'boolean') return item;
     return false;
   });
 }
@@ -631,7 +558,7 @@ async function _parse2(use) {
     selector,
     attr
   } = await use();
-  let redirection = null;
+  let redirection;
 
   if (query) {
     redirection = parse()[query];
