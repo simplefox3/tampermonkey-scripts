@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         网页宽屏
-// @version      2.15.9
+// @version      2.15.11
 // @description  适配了半次元、微信公众号、知乎、掘金、简书、贴吧、百度搜索、搜狗搜索、segmentfault、哔哩哔哩、微博、豆瓣、今日头条、Google、CSDN、crates.io、米游社原神
 // @author       sakura-flutter
 // @namespace    https://github.com/sakura-flutter/tampermonkey-scripts
@@ -51,7 +51,7 @@
 // @grant        GM_deleteValue
 // @grant        GM_addValueChangeListener
 // @grant        GM_removeValueChangeListener
-// @require      https://cdn.jsdelivr.net/npm/vue@3/dist/vue.runtime.global.prod.js
+// @require      https://cdn.jsdelivr.net/npm/vue@3.2.37/dist/vue.runtime.global.prod.js
 // @require      https://greasyfork.org/scripts/411093-toast/code/Toast.js?version=1081231
 // ==/UserScript==
 
@@ -602,7 +602,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1300px){
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1450px){:root{--inject-page-width:min(88vw, 1530px)}.inject-widescreen-loose-js{--inject-page-width:88vw}body #rcnt{max-width:none;width:var(--inject-page-width)}body #rcnt #center_col{width:calc(100% - var(--rhs-margin) - 550px)}body #rso .g{width:100% !important}body #rso .g .IsZvec{max-width:none}body #rso .g .kp-blk{width:100%}body #rso .g .kno-ftr{margin-right:0}body #rso g-section-with-header{width:652px}body .KFFQ0c{width:100%}}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1450px){:root{--inject-page-width:min(88vw, 1530px)}.inject-widescreen-loose-js{--inject-page-width:88vw}body #rcnt{max-width:none;width:var(--inject-page-width)}body #rcnt #center_col{width:calc(100% - var(--rhs-margin) - 600px)}body #rso .g{width:100% !important}body #rso .g .IsZvec{max-width:none}body #rso .g .kp-blk{width:100%}body #rso .g .kno-ftr{margin-right:0}body #rso g-section-with-header{width:652px}body .KFFQ0c{width:100%}}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -690,7 +690,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1100px){
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1350px){:root{--inject-page-width:min(75vw, 1300px)}.inject-widescreen-loose-js{--inject-page-width:75vw}.QuestionHeader-content,.QuestionHeader-footer{margin-left:auto;margin-right:auto;padding-left:0;width:var(--inject-page-width)}.QuestionHeader-footer-inner{width:auto}.QuestionHeader-footer-main{padding-left:0}.QuestionHeader-main{flex:1;width:0}.Question-main{width:var(--inject-page-width)}.Question-main>.ListShortcut{flex:1;width:0}.Question-main>.ListShortcut>.Question-mainColumn[data-zop-questionanswerlist]{padding-right:10px;width:auto}.Question-main>.Question-mainColumn{flex:1;padding-right:10px}.ztext .content_image,.ztext .origin_image{max-width:694px}}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (min-width: 1350px){:root{--inject-page-width:min(75vw, 1300px)}.inject-widescreen-loose-js{--inject-page-width:75vw}.QuestionHeader-content,.QuestionHeader-footer{margin-left:auto;margin-right:auto;padding-left:0;width:var(--inject-page-width)}.QuestionHeader-footer-inner{width:auto}.QuestionHeader-footer-main{padding-left:0}.QuestionHeader-main{flex:1;width:0}.Question-main{width:var(--inject-page-width)}.Question-main .AnswerItem-authorInfo{max-width:none}.Question-main>.ListShortcut{flex:1;width:0}.Question-main>.ListShortcut>.Question-mainColumn[data-zop-questionanswerlist]{padding-right:10px;width:auto}.Question-main>.Question-mainColumn{flex:1;padding-right:10px}.ztext .content_image,.ztext .origin_image{max-width:694px}}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1238,7 +1238,7 @@ __webpack_require__.d(ready_state_namespaceObject, {
 
 ;// CONCATENATED MODULE: ./src/utils/compatibility.ts
 /**
- * 兼容性检查
+ * 兼容性检查，只是用来拦截低版本用户
  * @return 是否通过
  */
 function checker({
@@ -1275,8 +1275,20 @@ function checker({
 const isDebug = "production" !== 'production';
 
 function warn(...args) {
-  isDebug && console.warn('%c      warn      ', 'background: #ffa500; padding: 1px; color: #fff;', ...args);
+  isDebug && warn.force(...args);
 }
+
+warn.force = function (...args) {
+  console.warn('%c      warn      ', 'background: #ffa500; padding: 1px; color: #fff;', ...args);
+};
+
+function error(...args) {
+  isDebug && error.force(...args);
+}
+
+error.force = function (...args) {
+  console.error('%c      error      ', 'background: red; padding: 1px; color: #fff;', ...args);
+};
 
 function table(...args) {
   isDebug && console.table(...args);
@@ -1308,7 +1320,6 @@ const execute = (readyState = currentState) => {
 };
 
 warn('document.readyState', currentState);
-execute();
 
 if (document.readyState !== 'complete') {
   document.addEventListener('readystatechange', () => execute(document.readyState));
@@ -1320,9 +1331,9 @@ window.addEventListener('load', () => execute('load'));
 const wrapper = (readyState, fn) => new Promise(resolve => {
   pool.get(readyState).push(function () {
     resolve(fn?.());
-  }) // 边界情况，加载完还有回调添加也执行一下
-  ;
-  ['complete', 'load'].includes(currentState) && execute();
+  }); // 立即检查一下
+
+  execute();
 });
 
 const loading = fn => wrapper('loading', fn);
@@ -2155,55 +2166,54 @@ p_lazy_exported.unuse = function() {
        /* harmony default export */ const tieba_baidu_com_p_lazy = (p_lazy_exported);
 
 ;// CONCATENATED MODULE: ./src/scripts/widescreen/sites/tieba-baidu-com/p.ts
-
-
+// import { $, $$ } from '@/utils/selector'
+// import * as readyState from '@/utils/ready-state'
 
 const tieba = ({
   store,
   createControl
 }) => ({
   handler() {
-    const postlistSelector = '#j_p_postlist';
-
+    // const postlistSelector = '#j_p_postlist'
     function execute() {
-      const replaceOriSrc = function () {
-        const process = new WeakSet();
-        return function () {
-          const BDEImgEls = $$(`${postlistSelector} .BDE_Image`);
+      /**
+       * 新版本更新后没什么好的办法，先不做处理
+       */
+
+      /* const replaceOriSrc = (function() {
+        const process = new WeakSet()
+          return function() {
+          const BDEImgEls = $$(`${postlistSelector} .BDE_Image`) as NodeListOf<HTMLImageElement>
           BDEImgEls.forEach(img => {
-            if (process.has(img)) return;
-            process.add(img); // 贴吧自身根据
+            if (process.has(img)) return
+            process.add(img)
+            // 忽略疑似上古时代的图片
+            if (img.src.includes('imgsa.baidu.com/forum')) return
+            // 贴吧自身根据
             // /^http:\/\/[^\/\?]*?\.baidu\.com[:8082]*\/(\w+)\/([^\/\?]+)\/([^\/\?]+)\/(\w+?)\.(?:webp|jpg|jpeg)/ 判断是否相册，
-            // 后续chrome更改必须为https访问时可能需要更改这里的逻辑
+            // 后续 chrome 更改必须为 https 访问时可能需要更改这里的逻辑
             // eslint-disable-next-line no-useless-escape
-
             if (/^http(s?):\/\/[^\/\?]*?\.baidu\.com[:8082]*\/(\w+)\/([^\/\?]+)\/([^\/\?]+)\/(\w+?)\.(?:webp|jpg|jpeg)/.test(img.src)) {
-              const protocol = img.src.match(/^(https?:\/\/)/)[0];
-              img.src = `${protocol}tiebapic.baidu.com/forum/pic/item/${img.src.split('/').slice(-1)[0]}`; // 不能直接用css：贴吧根据宽高判断,用css宽高auto时若图片未加载宽高获取到0 导致无法查看大图
-
-              img.style.cssText += 'max-width: 100%; width: auto !important; height: auto; max-height: 130vh;';
+              const protocol = img.src.match(/^(https?:\/\/)/)![0]
+              img.src = `${protocol}tiebapic.baidu.com/forum/pic/item/${img.src.split('/').slice(-1)[0]}`
+              // 不能直接用 css：贴吧根据宽高判断,用 css 宽高 auto 时若图片未加载宽高获取到 0 导致无法查看大图
+              img.style.cssText += 'max-width: 100%; width: auto !important; height: auto; max-height: 130vh;'
             }
-          });
-        };
-      }();
-
-      interactive(() => {
+          })
+        }
+      })()
+        readyState.interactive(() => {
         // 替换原图
-        replaceOriSrc();
+        replaceOriSrc()
         const observer = new MutationObserver(mutationsList => {
           mutationsList.forEach(mutation => {
-            const {
-              target
-            } = mutation;
-            if (target.id !== postlistSelector.slice(1)) return;
-            replaceOriSrc();
-          });
-        });
-        observer.observe($('.left_section'), {
-          childList: true,
-          subtree: true
-        });
-      });
+            const { target } = mutation
+            if ((target as HTMLElement).id !== postlistSelector.slice(1)) return
+            replaceOriSrc()
+          })
+        })
+        observer.observe($('.left_section') as HTMLElement, { childList: true, subtree: true })
+      }) */
       tieba_baidu_com_p_lazy.use();
     }
 
